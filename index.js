@@ -1,10 +1,3 @@
-// TO DO
-// 1. Round answers with long decimals
-// 2. Prevent dividing by 0
-// 3. Disable . if there's already a decimal separator
-// 4. Add backspace button
-// 5. Add keyboard support
-
 console.log("Hello World");
 
 let input = "";
