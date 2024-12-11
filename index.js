@@ -1,6 +1,7 @@
 console.log("Hello World");
 
 let input = "";
+let output = "";
 
 let number1 = "";
 let operator = "";
@@ -10,6 +11,7 @@ let prevResult = ""; // For chaining equations
 const keypad = document.querySelector("#keypad");
 const display = document.querySelector("#display");
 const showInput = document.createElement("div");
+const showOutput = document.createElement("div");
 
 function operate(num1, op, num2) {
     num1 = parseFloat(num1);
@@ -42,6 +44,11 @@ function clearEquation() {
     console.log("CLEAR",number1,operator,number2);
 }
 
+function clearDisplay() {
+    input = "";
+    output = "";
+}
+
 keypad.addEventListener('click', (event) => {
     const target = event.target;
     switch(target.id) {
@@ -60,6 +67,7 @@ keypad.addEventListener('click', (event) => {
             } else {
                 number1 += target.id;
             }
+            input += target.id;
             break;
         case "period":
             if (operator != "") { // Determine where to append the new digits
@@ -67,6 +75,7 @@ keypad.addEventListener('click', (event) => {
             } else {
                 number1 += ".";
             }
+            input += target.id;
             break;
         case "add":
             if (operator != "") {
@@ -77,6 +86,7 @@ keypad.addEventListener('click', (event) => {
             } else {
                 operator = target.id;
             }
+            input += "+";
             break;
         case "sub":
             if (operator != "") {
@@ -87,6 +97,7 @@ keypad.addEventListener('click', (event) => {
             } else {
                 operator = target.id;
             }
+            input += "-";
             break;
         case "multiply":
             if (operator != "") {
@@ -97,6 +108,7 @@ keypad.addEventListener('click', (event) => {
             } else {
                 operator = target.id;
             }
+            input += "x";
             break;
         case "divide":
             if (operator != "") {
@@ -107,14 +119,24 @@ keypad.addEventListener('click', (event) => {
             } else {
                 operator = target.id;
             }
+            input += "/";
             break;
         case "equal":
             console.log("EQUATION",number1,operator,number2);
-            operate(number1, operator, number2);
+            output = operate(number1, operator, number2);
             clearEquation();
+            break;
+        case "clear":
+            clearEquation();
+            clearDisplay();
+            break;
         default:
             break;
     }
+    showInput.textContent = input;
+    showOutput.textContent = output;
+    display.appendChild(showInput);
+    display.appendChild(showOutput);
 
     // console.log(number1, "+", operator, "+", number2);
 });
