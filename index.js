@@ -2,14 +2,45 @@ console.log("Hello World");
 
 let input = "";
 
-let number1;
-let operator;
-let number2;
+let number1 = "";
+let operator = "";
+let number2 = "";
+let prevResult = ""; // For chaining equations
 
 const keypad = document.querySelector("#keypad");
 const display = document.querySelector("#display");
 const showInput = document.createElement("div");
-const answer = document.createElement("div");
+
+function operate(num1, op, num2) {
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    let result;
+    switch(op) {
+        case "add":
+            result = num1 + num2;
+            break;
+        case "sub":
+            result = num1 - num2;
+            break;
+        case "multiply":
+            result = num1 * num2;
+            break;
+        case "divide":
+            result = num1 / num2;
+            break;
+        default:
+            break;
+    }
+    console.log(result);
+    return result;
+}
+
+function clearEquation() {
+    number1 = "";
+    operator = "";
+    number2 = "";
+    console.log("CLEAR",number1,operator,number2);
+}
 
 keypad.addEventListener('click', (event) => {
     const target = event.target;
@@ -24,31 +55,59 @@ keypad.addEventListener('click', (event) => {
         case "8":
         case "9":
         case "0": 
-            console.log(target.id);
-            input += target.id;
+            if (operator != "") { // Determine where to append the new digits
+                number2 += target.id;
+            } else {
+                number1 += target.id;
+            }
             break;
         case "add":
-            console.log(target.id);
-            input += "+";
+            if (operator != "") {
+                prevResult = operate(number1, operator, number2);
+                clearEquation();
+                number1 = prevResult; // Move old result to left of operator
+                operator = target.id;
+            } else {
+                operator = target.id;
+            }
             break;
         case "sub":
-            console.log(target.id);
-            input += "-";
+            if (operator != "") {
+                prevResult = operate(number1, operator, number2);
+                clearEquation();
+                number1 = prevResult; // Move old result to left of operator
+                operator = target.id;
+            } else {
+                operator = target.id;
+            }
             break;
         case "multiply":
-            console.log(target.id);
-            input += "*";
+            if (operator != "") {
+                prevResult = operate(number1, operator, number2);
+                clearEquation();
+                number1 = prevResult; // Move old result to left of operator
+                operator = target.id;
+            } else {
+                operator = target.id;
+            }
             break;
         case "divide":
-            console.log(target.id);
-            input += "/";
+            if (operator != "") {
+                prevResult = operate(number1, operator, number2);
+                clearEquation();
+                number1 = prevResult; // Move old result to left of operator
+                operator = target.id;
+            } else {
+                operator = target.id;
+            }
             break;
         case "equal":
-            let result = 
-            display.append(answer);
+            console.log("EQUATION",number1,operator,number2);
+            operate(number1, operator, number2);
+            clearEquation();
+        default:
+            break;
     }
-    
-    console.log(input);
-    showInput.textContent = input;
-    display.append(showInput);
+
+    // console.log(number1, "+", operator, "+", number2);
 });
