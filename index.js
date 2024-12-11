@@ -1,11 +1,14 @@
 console.log("Hello World");
 
-const equation = [];
-let equationString = "";
+let input = "";
+
+let number1;
+let operator;
+let number2;
 
 const keypad = document.querySelector("#keypad");
 const display = document.querySelector("#display");
-const showEquation = document.createElement("div");
+const showInput = document.createElement("div");
 const answer = document.createElement("div");
 
 keypad.addEventListener('click', (event) => {
@@ -22,35 +25,30 @@ keypad.addEventListener('click', (event) => {
         case "9":
         case "0": 
             console.log(target.id);
-            equation.push(target.id);
-            equationString = equationString + target.id;
+            input += target.id;
             break;
         case "add":
             console.log(target.id);
-            equation.push("+");
-            equationString = equationString + "+";
+            input += "+";
             break;
         case "sub":
             console.log(target.id);
-            equation.push("-");
-            equationString = equationString + "-";
+            input += "-";
             break;
         case "multiply":
             console.log(target.id);
-            equation.push("*");
-            equationString = equationString + "*";
+            input += "*";
             break;
         case "divide":
             console.log(target.id);
-            equation.push("/");
-            equationString = equationString + "/";
+            input += "/";
             break;
         case "equal":
             let result = 
             display.append(answer);
     }
     
-    console.log(equationString);
-    showEquation.textContent = equationString;
-    display.append(showEquation);
+    console.log(input);
+    showInput.textContent = input;
+    display.append(showInput);
 });
