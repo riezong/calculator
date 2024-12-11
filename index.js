@@ -1,3 +1,10 @@
+// TO DO
+// 1. Round answers with long decimals
+// 2. Prevent dividing by 0
+// 3. Disable . if there's already a decimal separator
+// 4. Add backspace button
+// 5. Add keyboard support
+
 console.log("Hello World");
 
 let input = "";
@@ -78,8 +85,9 @@ keypad.addEventListener('click', (event) => {
             input += target.id;
             break;
         case "add":
-            if (operator != "") {
+            if (operator != "") { // Resolve current equation before adding more operators
                 prevResult = operate(number1, operator, number2);
+                input = prevResult;
                 clearEquation();
                 number1 = prevResult; // Move old result to left of operator
                 operator = target.id;
@@ -91,8 +99,9 @@ keypad.addEventListener('click', (event) => {
         case "sub":
             if (operator != "") {
                 prevResult = operate(number1, operator, number2);
+                input = prevResult;
                 clearEquation();
-                number1 = prevResult; // Move old result to left of operator
+                number1 = prevResult;
                 operator = target.id;
             } else {
                 operator = target.id;
@@ -102,8 +111,9 @@ keypad.addEventListener('click', (event) => {
         case "multiply":
             if (operator != "") {
                 prevResult = operate(number1, operator, number2);
+                input = prevResult;
                 clearEquation();
-                number1 = prevResult; // Move old result to left of operator
+                number1 = prevResult;
                 operator = target.id;
             } else {
                 operator = target.id;
@@ -113,8 +123,9 @@ keypad.addEventListener('click', (event) => {
         case "divide":
             if (operator != "") {
                 prevResult = operate(number1, operator, number2);
+                input = prevResult;
                 clearEquation();
-                number1 = prevResult; // Move old result to left of operator
+                number1 = prevResult;
                 operator = target.id;
             } else {
                 operator = target.id;
@@ -124,7 +135,7 @@ keypad.addEventListener('click', (event) => {
         case "equal":
             console.log("EQUATION",number1,operator,number2);
             output = operate(number1, operator, number2);
-            clearEquation();
+            // clearEquation();
             break;
         case "clear":
             clearEquation();
