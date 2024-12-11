@@ -12,8 +12,8 @@ const display = document.querySelector("#display");
 const showInput = document.createElement("div");
 
 function operate(num1, op, num2) {
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     let result;
     switch(op) {
         case "add":
@@ -54,11 +54,18 @@ keypad.addEventListener('click', (event) => {
         case "7":
         case "8":
         case "9":
-        case "0": 
+        case "0":
             if (operator != "") { // Determine where to append the new digits
                 number2 += target.id;
             } else {
                 number1 += target.id;
+            }
+            break;
+        case "period":
+            if (operator != "") { // Determine where to append the new digits
+                number2 += ".";
+            } else {
+                number1 += ".";
             }
             break;
         case "add":
