@@ -1,0 +1,69 @@
+* {
+    outline: 1px dashed grey;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    width: 99vh;
+    height: 99vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    margin: 4px;
+    padding: 10px;
+    border-radius: 4px;
+    flex: 1;
+    background-color: orange;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+#display {
+    margin: 4px;
+    height: 50px;
+    background-color: grey;
+}
+
+#keypad {
+    display: flex;
+    flex-direction: row;
+}
+
+#numbers ul {
+    text-decoration: none;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+
+#equal {
+    flex-grow: .5;
+}
+
+#numbers li {
+    flex: 1;
+    display: flex;
+}
+
+#operators ul {
+    text-decoration: none;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+#operators li {
+    flex: 1;
+    display: flex;
+}

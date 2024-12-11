@@ -3,11 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
+    <script src=""></script>
 </head>
 <body>
-    
+    <div class="container">
+        <div id="display"></div>
+        <div id="keypad">
+            <div id="numbers">
+                <ul>
+                    <li><button id="1">1</button></li>
+                    <li><button id="2">2</button></li>
+                    <li><button id="3">3</button></li>
+                </ul><ul>
+                    <li><button id="4">4</button></li>
+                    <li><button id="5">5</button></li>
+                    <li><button id="6">6</button></li>
+                </ul><ul>
+                    <li><button id="7">7</button></li>
+                    <li><button id="8">8</button></li>
+                    <li><button id="9">9</button></li>
+                </ul><ul>
+                    <li><button id="0">0</button></li>
+                </ul>
+            </div>
+            <div id="operators">
+                <ul>
+                    <li><button id="add">+</button></li>
+                    <li><button id="sub">-</button></li>
+                    <li><button id="multiply">*</button></li>
+                    <li><button id="divide">/</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const script = document.createElement('script');
+            script.src = 'index.js';
+            document.head.appendChild(script);
+        });
+    </script>
 </body>
 </html>
